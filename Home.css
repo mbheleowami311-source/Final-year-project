@@ -1,0 +1,94 @@
+{
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+body{
+     color:font-family: Arial, sans serif;
+     min-height: 100vh;
+     background: url('umsebenzi.jpeg');
+     background-size: cover;
+     color: # white;
+}
+html,body{
+     height: 100%;
+}
+#login{
+     background-color: light grey;
+     color:blue;
+     border: 1px solid black;
+}
+#Sign up{
+     background-color:#007bff;
+     color: blue;
+     button-color: blue;
+}
+nav{
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100%;
+  background: white;
+  padding: 16px 40px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+nav a{
+      color: black;
+      text-decoration: none;
+      font-weight: 600;
+      margin-right: 24px;
+      transition: color 0.2s ease;
+      padding:8px 16px;
+}
+nav a:hover{
+      color: Orange;
+}
+nav-button{display :flex
+           align-items: centre;
+           gap: 20px
+}
+.hero{
+     padding-top: 160px;
+}
+section{
+      text-align:left;
+      font: white;
+      color: white;
+      
+      right:70;
+      
+     
+}
+body{
+    text-align: left;
+    color: white;
+    top: 20;
+    left:0;
+} 
+footer{
+  background: white;
+  color: Black;
+  padding: 20px 40px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 80px;
+  padding-top: 100px;
+  box-sizing: border-box;
+}
+
+iframe {
+   width="25%";
+   height="200px";
+   border="none";
+}

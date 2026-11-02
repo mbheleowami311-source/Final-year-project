@@ -1,0 +1,93 @@
+
+
+{% extends "base.html" %}
+
+{% block title %}
+Sign In
+{% endblock %}
+
+{% block body %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='3_Login.css') }}">
+
+<div class="login-container">
+
+
+<h1>Welcome Back</h1>
+
+
+<form method="POST" action="/signIn">
+
+    <div class="form-group">
+
+        <label for="email">
+            Email
+        </label>
+
+        <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+        >
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="password">
+            Password
+        </label>
+
+        <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+        >
+
+    </div>
+
+
+    <button type="submit" class="login-btn">
+        Login
+    </button>
+
+</form>
+
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+
+    {% if messages %}
+
+        {% for category, message in messages %}
+
+            <div class="flash-message {{ category }}">
+                {{ message }}
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+{% endwith %}
+
+
+<div class="signup-link">
+
+    Don't have an account?
+
+    <a href="{{url_for('register_commuter')}}">
+        Sign Up
+    </a>
+
+</div>
+
+
+</div>
+
+{% endblock %}

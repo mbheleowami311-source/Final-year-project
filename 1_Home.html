@@ -1,0 +1,798 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+
+<section class="hero">
+
+<div class="hero-content">
+
+    <div class="hero-text">
+
+        <span class="welcome-text">
+            WELCOME TO OUR TAXI RANK
+        </span>
+
+        <h1>
+            Your Journey,
+            <span>Our Priority.</span>
+        </h1>
+
+        <p>
+            A simple and convenient taxi transportation system
+            that connects commuters with available taxis and
+            helps you get to your destination safely.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="/login" class="btn-primary">
+                Login
+            </a>
+
+            <a href="{{url_for('register_commuter')}}" class="btn-secondary">
+                Create Account
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- INFORMATION CARD -->
+    <div class="info-card">
+
+        <div class="taxi-icon">
+            🚕
+        </div>
+
+        <h2>
+            Your Journey Starts Here
+        </h2>
+
+        <p>
+            Login to your commuter account to request a taxi,
+            provide your pickup location and destination, and
+            manage your journey.
+        </p>
+
+
+        <div class="info-item">
+
+            <span>📍</span>
+
+            <div>
+                <strong>Choose your location</strong>
+
+                <small>
+                    Tell us where you are
+                </small>
+            </div>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <span>🚕</span>
+
+            <div>
+                <strong>Request a taxi</strong>
+
+                <small>
+                    Connect with an available taxi
+                </small>
+            </div>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <span>🛡️</span>
+
+            <div>
+                <strong>Travel safely</strong>
+
+                <small>
+                    Get to your destination
+                </small>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- SERVICES SECTION -->
+
+<section class="features">
+
+<div class="section-heading">
+
+    <span>OUR SERVICES</span>
+
+    <h2>
+        Transportation Made Simple
+    </h2>
+
+    <p>
+        Our taxi-rank system makes it easier for commuters
+        to request transportation and manage their journeys.
+    </p>
+
+</div>
+
+
+<div class="feature-container">
+
+    <div class="feature-card">
+
+        <div class="feature-icon">
+            📍
+        </div>
+
+        <h3>
+            Easy Booking
+        </h3>
+
+        <p>
+            Logged-in commuters can enter their pickup
+            location and destination to request a taxi.
+        </p>
+
+    </div>
+
+
+    <div class="feature-card">
+
+        <div class="feature-icon">
+            🚕
+        </div>
+
+        <h3>
+            Find Available Taxis
+        </h3>
+
+        <p>
+            Connect with available taxis operating
+            within the taxi rank.
+        </p>
+
+    </div>
+
+
+    <div class="feature-card">
+
+        <div class="feature-icon">
+            📱
+        </div>
+
+        <h3>
+            Track Your Journey
+        </h3>
+
+        <p>
+            Keep track of your taxi request and journey
+            status through your commuter dashboard.
+        </p>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- HOW IT WORKS -->
+
+<section class="how-it-works">
+
+<div class="section-heading">
+
+    <span>HOW IT WORKS</span>
+
+    <h2>
+        Simple. Fast. Convenient.
+    </h2>
+
+</div>
+
+
+<div class="steps">
+
+    <div class="step">
+
+        <div class="step-number">
+            1
+        </div>
+
+        <h3>
+            Create an Account
+        </h3>
+
+        <p>
+            Register as a commuter to access the
+            taxi booking system.
+        </p>
+
+    </div>
+
+
+    <div class="step">
+
+        <div class="step-number">
+            2
+        </div>
+
+        <h3>
+            Request a Taxi
+        </h3>
+
+        <p>
+            Login and enter your pickup location
+            and destination.
+        </p>
+
+    </div>
+
+
+    <div class="step">
+
+        <div class="step-number">
+            3
+        </div>
+
+        <h3>
+            Start Your Journey
+        </h3>
+
+        <p>
+            Once a taxi is assigned, follow your
+            journey through your dashboard.
+        </p>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- CALL TO ACTION -->
+
+<section class="cta">
+
+<div>
+
+    <h2>
+        Ready to Get Started?
+    </h2>
+
+    <p>
+        Create your commuter account and start
+        your journey with us.
+    </p>
+
+</div>
+
+<a href="{{url_for('register_commuter')}}" class="btn-primary">
+    Create Account
+</a>
+
+</section>
+
+<style>
+
+    * {
+        box-sizing: border-box;
+    }
+
+
+    body {
+        margin: 0;
+
+        font-family: Arial, sans-serif;
+
+        background: #f5f7fa;
+
+        color: #002147;
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+
+        min-height: 620px;
+
+        background: #002147;
+
+        padding: 80px 7%;
+
+        display: flex;
+
+        align-items: center;
+    }
+
+
+    .hero-content {
+
+        width: 100%;
+
+        max-width: 1200px;
+
+        margin: auto;
+
+        display: grid;
+
+        grid-template-columns: 1.2fr 0.8fr;
+
+        gap: 70px;
+
+        align-items: center;
+    }
+
+
+    .welcome-text {
+
+        color: white;
+
+        font-weight: bold;
+
+        letter-spacing: 2px;
+
+        font-size: 14px;
+
+        opacity: 0.9;
+    }
+
+
+    .hero-text h1 {
+
+        color: white;
+
+        font-size: 55px;
+
+        line-height: 1.1;
+
+        margin: 20px 0;
+    }
+
+
+    .hero-text h1 span {
+
+        color: white;
+
+        display: block;
+    }
+
+
+    .hero-text p {
+
+        color: #e5edf5;
+
+        font-size: 18px;
+
+        line-height: 1.7;
+
+        max-width: 600px;
+    }
+
+
+    /* =========================
+       BUTTONS
+    ========================= */
+
+    .hero-buttons {
+
+        display: flex;
+
+        gap: 15px;
+
+        margin-top: 30px;
+    }
+
+
+    .btn-primary,
+    .btn-secondary {
+
+        padding: 14px 28px;
+
+        border-radius: 7px;
+
+        text-decoration: none;
+
+        font-weight: bold;
+
+        display: inline-block;
+
+        transition: 0.2s;
+    }
+
+
+    .btn-primary {
+
+        background: white;
+
+        color: #002147;
+    }
+
+
+    .btn-primary:hover {
+
+        background: #e8eef5;
+
+        transform: translateY(-2px);
+    }
+
+
+    .btn-secondary {
+
+        border: 2px solid white;
+
+        color: white;
+    }
+
+
+    .btn-secondary:hover {
+
+        background: white;
+
+        color: #002147;
+    }
+
+
+    /* =========================
+       INFORMATION CARD
+    ========================= */
+
+    .info-card {
+
+        background: white;
+
+        padding: 40px;
+
+        border-radius: 15px;
+
+        box-shadow:
+            0 20px 50px rgba(0, 0, 0, 0.25);
+    }
+
+
+    .taxi-icon {
+
+        font-size: 50px;
+
+        margin-bottom: 15px;
+    }
+
+
+    .info-card h2 {
+
+        font-size: 28px;
+
+        margin: 10px 0;
+
+        color: #002147;
+    }
+
+
+    .info-card > p {
+
+        color: #5f6b76;
+
+        line-height: 1.6;
+
+        margin-bottom: 25px;
+    }
+
+
+    .info-item {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 15px;
+
+        padding: 15px 0;
+
+        border-top: 1px solid #e1e7ed;
+    }
+
+
+    .info-item span {
+
+        font-size: 25px;
+    }
+
+
+    .info-item strong {
+
+        display: block;
+
+        margin-bottom: 4px;
+
+        color: #002147;
+    }
+
+
+    .info-item small {
+
+        color: #687582;
+    }
+
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    .features,
+    .how-it-works {
+
+        padding: 80px 7%;
+    }
+
+
+    .section-heading {
+
+        text-align: center;
+
+        max-width: 650px;
+
+        margin: 0 auto 50px;
+    }
+
+
+    .section-heading span {
+
+        color: #002147;
+
+        font-size: 14px;
+
+        font-weight: bold;
+
+        letter-spacing: 2px;
+    }
+
+
+    .section-heading h2 {
+
+        font-size: 36px;
+
+        margin: 12px 0;
+
+        color: #002147;
+    }
+
+
+    .section-heading p {
+
+        color: #64748b;
+
+        line-height: 1.6;
+    }
+
+
+    /* =========================
+       FEATURES
+    ========================= */
+
+    .feature-container {
+
+        max-width: 1100px;
+
+        margin: auto;
+
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 25px;
+    }
+
+
+    .feature-card {
+
+        background: white;
+
+        padding: 35px;
+
+        border-radius: 12px;
+
+        text-align: center;
+
+        border: 1px solid #e2e8f0;
+
+        box-shadow:
+            0 5px 20px rgba(0, 33, 71, 0.06);
+
+        transition: 0.2s;
+    }
+
+
+    .feature-card:hover {
+
+        transform: translateY(-5px);
+
+        box-shadow:
+            0 10px 30px rgba(0, 33, 71, 0.12);
+    }
+
+
+    .feature-icon {
+
+        font-size: 40px;
+
+        margin-bottom: 15px;
+    }
+
+
+    .feature-card h3 {
+
+        color: #002147;
+    }
+
+
+    .feature-card p {
+
+        color: #64748b;
+
+        line-height: 1.6;
+    }
+
+
+    /* =========================
+       HOW IT WORKS
+    ========================= */
+
+    .how-it-works {
+
+        background: white;
+    }
+
+
+    .steps {
+
+        max-width: 1000px;
+
+        margin: auto;
+
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 40px;
+
+        text-align: center;
+    }
+
+
+    .step-number {
+
+        width: 55px;
+
+        height: 55px;
+
+        margin: 0 auto 20px;
+
+        border-radius: 50%;
+
+        background: #002147;
+
+        color: white;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        font-size: 20px;
+
+        font-weight: bold;
+    }
+
+
+    .step h3 {
+
+        color: #002147;
+    }
+
+
+    .step p {
+
+        color: #64748b;
+
+        line-height: 1.6;
+    }
+
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+
+        margin: 60px 7%;
+
+        padding: 45px;
+
+        border-radius: 15px;
+
+        background: #002147;
+
+        color: white;
+
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+    }
+
+
+    .cta h2 {
+
+        margin: 0 0 10px;
+
+        font-size: 30px;
+
+        color: white;
+    }
+
+
+    .cta p {
+
+        margin: 0;
+
+        color: #dce6f0;
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 800px) {
+
+        .hero-content {
+
+            grid-template-columns: 1fr;
+        }
+
+
+        .hero-text h1 {
+
+            font-size: 40px;
+        }
+
+
+        .feature-container,
+        .steps {
+
+            grid-template-columns: 1fr;
+        }
+
+
+        .cta {
+
+            flex-direction: column;
+
+            gap: 25px;
+
+            text-align: center;
+        }
+
+    }
+
+</style>
+
+{% endblock %}

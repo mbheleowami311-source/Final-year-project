@@ -1,0 +1,62 @@
+body{
+   margin:0;
+  min-height:100vh;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  background: linear-gradient(to bottom, skyblue, lightcyan);
+  font-family:Arial, sans serif;
+}
+.authentication{
+   background: rgba(255,255,255, 0.5);
+   backdrop-filter: blur(15px);
+   -webkit-backdrop-filter: blur(15px);
+   width:350px;
+   padding:30px;
+   border: 1px solid white;
+   border-radius:15px;
+   text-align: center;
+   box-shadow: 0px 10px 30px rgba(0,0,0,0.3);
+}
+.authentication h2{
+   color:navy;
+   margin-bottom: 5px;
+
+}
+.authentication p{
+    color:gray;
+    margin bottom:20px;
+}
+.authentication label{
+    display: block;
+    text-align:left;
+    color:navy;
+    font-weight:bold;
+    margin-bottom:5px;
+}
+.authentication input{
+    width:100%;
+    padding:10px;
+    margin-bottom: 20px;
+    border: 1px solid lightgray;
+    border-radius:8px;
+    box-sizing: border-box;
+    background: rgba(255,255,255,0.6);
+}
+.authentication button{
+    width: 100%;
+    padding:12px;
+    background:teal;
+    color: white;
+    border: none;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+}
+.authentication .small{
+    font-size:13px;
+    margin-top:15px
+}
+.authentication a{
+    color:teal;
+}

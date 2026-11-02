@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <title>IPTMS — Sign Up</title>
+    <link rel="stylesheet" href="sign-in.css">
+    <link rel="homepage" href="Home.html">
+
+</head>
+<body>
+
+<div class="signup-card">
+  <div class="brand">IPTMS</div>
+  <div class="subtitle">Create your account</div>
+
+  <form id="loginForm" method="post">
+    <div class="field">
+      <label for="fullname">Full Name:</label>
+      <input type="text" id="name" placeholder="Enter your full name" required>
+    </div>
+
+    <div class="field">
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" placeholder="name@example.com" required>
+    </div>
+
+    <div class="field">
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" placeholder="e.g. 071 234 5678" required>
+    </div>
+<!-- 
+    <div class="field">
+      <label for="role">I am signing up as:</label>
+      <select id="role" required>
+        <option value="">--Select a role--</option>
+        <option value="commuter">Commuter</option>
+        <option value="manager">Manager</option>
+      </select>
+    </div> -->
+
+    <div class="field">
+      <label for="password">Password:</label>
+      <input type="password" id="password" placeholder="Create a password" required>
+
+    </div>
+
+    <div class="field">
+      <label for="confirm-password">Confirm Password:</label>
+      <input type="password" id="confirm-password" placeholder="Re-enter your password" required>
+    </div>
+
+    <div class="terms">
+      <input type="checkbox" id="terms" required>
+      <label for="terms">I agree to the Terms & Conditions and Privacy Policy</label>
+    </div>
+
+    <button type="submit" class="signup-btn">Sign Up</button>
+  </form>
+
+  <div class="login-link">
+    Back to login <a href="login(IPTMS).html">Log in</a>
+  </div>
+</div>
+
+<script>
+
+document.getElementById("loginForm").addEventListener("submit", async function(e) {
+
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const password = document.getElementById("password").value;
+
+
+    const response = await fetch("http://127.0.0.1:8080/register_commuter", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+            email: email,
+            password: password,
+            name:name,
+            phone: phone
+        })
+
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+
+        window.location.href =
+            "file:///home/nkanyiso-zungu/Desktop/Ntando's_Group/frontend/login(IPTMS).html";
+
+    } else {
+
+        window.location.href =
+            "file:///home/nkanyiso-zungu/Desktop/Ntando's_Group/frontend/signin.html";
+
+
+    }
+
+});
+
+</script>
+
+</body>
+
+</html>

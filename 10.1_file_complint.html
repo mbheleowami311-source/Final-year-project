@@ -1,0 +1,171 @@
+
+{% extends "10.0_userbase.html" %}
+
+{% block title %}
+File a Complaint
+{% endblock %}
+
+{% block content %}
+
+<style>
+    .complaint-container {
+        max-width: 750px;
+        margin: 0 auto;
+        background: white;
+        padding: 35px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .complaint-header {
+        margin-bottom: 30px;
+    }
+
+    .complaint-header h1 {
+        color: #111827;
+        margin-bottom: 8px;
+    }
+
+    .complaint-header p {
+        color: #6b7280;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #374151;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid #d1d5db;
+        border-radius: 7px;
+        font-size: 14px;
+        outline: none;
+        transition: 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        border-color: #0f5132;
+        box-shadow: 0 0 0 2px rgba(15, 81, 50, 0.1);
+    }
+
+    .form-group textarea {
+        height: 140px;
+        resize: vertical;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 13px;
+        border: none;
+        border-radius: 7px;
+        background: #0f5132;
+        color: white;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .submit-btn:hover {
+        background: #146c43;
+    }
+</style>
+
+
+<div class="complaint-container">
+
+    <div class="complaint-header">
+        <h1>File a Complaint</h1>
+        <p>Please provide the details of your complaint below.</p>
+    </div>
+
+
+    <form action="{{ url_for('file_complaint') }}" method="POST">
+
+        <!-- NAME -->
+        <div class="form-group">
+            <label for="name">Full Name</label>
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter your full name"
+                maxlength="100"
+                required
+            >
+        </div>
+
+
+        <!-- COMPLAINT TYPE -->
+        <div class="form-group">
+            <label for="complaintType">Complaint Type</label>
+
+            <select
+                id="complaintType"
+                name="complaint_type"
+                required
+            >
+                <option value="">-- Select --</option>
+                <option value="Driver Behavior">Driver Behavior</option>
+                <option value="Vehicle Condition">Vehicle Condition</option>
+                <option value="Overcharging">Overcharging</option>
+                <option value="Late/No Show">Late / No Show</option>
+                <option value="Lost items">Lost items</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+
+        <!-- LOCATION -->
+        <div class="form-group">
+            <label for="location">Location</label>
+
+            <input
+                type="text"
+                id="location"
+                name="location"
+                placeholder="Enter the location where the incident occurred"
+                maxlength="100"
+                required
+            >
+        </div>
+
+
+        <!-- DETAILS -->
+        <div class="form-group">
+            <label for="details">Complaint Details</label>
+
+            <textarea
+                id="details"
+                name="details"
+                placeholder="Describe your complaint..."
+                maxlength="100"
+                required
+            ></textarea>
+        </div>
+
+
+        <!-- SUBMIT -->
+        <button type="submit" class="submit-btn">
+            Submit Complaint
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}
+

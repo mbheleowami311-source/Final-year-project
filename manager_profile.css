@@ -1,0 +1,488 @@
+/* ===================================
+   GENERAL PAGE
+=================================== */
+
+.profile-page {
+    padding: 30px;
+    background: #f4f7fc;
+    min-height: 100vh;
+    color: #172b4d;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+.profile-page * {
+    box-sizing: border-box;
+}
+
+.page-header {
+    margin-bottom: 25px;
+}
+
+.page-header h1 {
+    margin: 0 0 8px;
+    color: #002b5c;
+    font-size: 30px;
+}
+
+.page-header p {
+    margin: 0;
+    color: #718096;
+    font-size: 14px;
+}
+
+
+/* ===================================
+   FLASH MESSAGES
+=================================== */
+
+.alert {
+    padding: 13px 16px;
+    margin-bottom: 20px;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+.alert-success {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.alert-error,
+.alert-danger {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.alert-warning {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.failed-message{
+    color: #991b1b;
+}
+
+
+/* ===================================
+   PROFILE SUMMARY
+=================================== */
+
+.profile-summary {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    background: #ffffff;
+    padding: 25px;
+    border: 1px solid #e0e9f5;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 43, 92, 0.04);
+    margin-bottom: 25px;
+}
+
+.profile-avatar {
+    width: 95px;
+    height: 95px;
+    min-width: 95px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #002b5c;
+    color: #ffffff;
+    border: 4px solid #e4edff;
+    border-radius: 50%;
+    font-size: 38px;
+    font-weight: bold;
+}
+
+.profile-summary-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.profile-summary-details h2 {
+    margin: 0 0 8px;
+    font-size: 24px;
+    color: #002b5c;
+}
+
+.manager-role {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #e6efff;
+    color: #164e9b;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.profile-summary-details p {
+    margin: 8px 0;
+    color: #526781;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.detail-icon {
+    margin-right: 8px;
+    color: #164e9b;
+}
+
+.account-status {
+    display: inline-block;
+    padding: 4px 9px;
+    border-radius: 15px;
+    background: #dcfce7;
+    color: #166534;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.profile-id {
+    min-width: 150px;
+    padding: 20px;
+    border-left: 1px solid #e0e9f5;
+}
+
+.profile-id span {
+    display: block;
+    margin-bottom: 8px;
+    color: #718096;
+    font-size: 13px;
+}
+
+.profile-id strong {
+    color: #002b5c;
+    font-size: 18px;
+}
+
+
+/* ===================================
+   CONTENT GRID
+=================================== */
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+    align-items: start;
+}
+
+.profile-card {
+    background: #ffffff;
+    padding: 25px;
+    border: 1px solid #e0e9f5;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 43, 92, 0.04);
+    min-width: 0;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 17px;
+    border-bottom: 1px solid #e6edf5;
+}
+
+.card-header h2 {
+    margin: 0 0 7px;
+    color: #002b5c;
+    font-size: 20px;
+}
+
+.card-header p {
+    margin: 0;
+    color: #718096;
+    font-size: 13px;
+}
+
+
+/* ===================================
+   FORM ELEMENTS
+=================================== */
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    min-width: 0;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 9px;
+    color: #263b57;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.form-group input {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    padding: 12px 13px;
+    border: 1px solid #d6e0ed;
+    border-radius: 7px;
+    background: #ffffff;
+    color: #263b57;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+.form-group input[readonly] {
+    background: #f3f6fa;
+    color: #718096;
+    cursor: not-allowed;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 7px;
+    color: #718096;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* ===================================
+   BUTTONS
+=================================== */
+
+.primary-button {
+    width: 100%;
+    padding: 13px 18px;
+    background: #002b5c;
+    color: #ffffff;
+    border: none;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.primary-button:hover {
+    background: #064b91;
+}
+
+.password-message {
+    font-size: 13px;
+    margin: 0 0 15px;
+}
+
+
+/* ===================================
+   PASSWORD HEADING
+=================================== */
+
+.password-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.lock-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    min-width: 45px;
+    background: #e6efff;
+    border-radius: 10px;
+    font-size: 22px;
+}
+
+
+/* ===================================
+   ACCOUNT SETTINGS
+=================================== */
+
+.settings-card {
+    grid-column: 1 / -1;
+}
+
+.setting-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 17px 0;
+    border-bottom: 1px solid #e6edf5;
+}
+
+.setting-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.setting-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    border-radius: 10px;
+    background: #edf3ff;
+    color: #164e9b;
+    font-size: 20px;
+}
+
+.setting-description {
+    flex: 1;
+    min-width: 0;
+}
+
+.setting-description strong {
+    display: block;
+    color: #263b57;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.setting-description p {
+    margin: 0;
+    color: #718096;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.setting-link,
+.logout-link {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.setting-link {
+    color: #164e9b;
+}
+
+.logout-link {
+    color: #dc2626;
+}
+
+.setting-link:hover,
+.logout-link:hover {
+    text-decoration: underline;
+}
+
+.setting-label {
+    color: #526781;
+    font-size: 12px;
+}
+
+
+/* ===================================
+   FOOTER
+=================================== */
+
+.profile-footer {
+    text-align: center;
+    padding: 25px 10px 10px;
+    margin-top: 25px;
+    border-top: 1px solid #e0e9f5;
+    color: #718096;
+    font-size: 12px;
+}
+
+
+/* ===================================
+   RESPONSIVE DESIGN
+=================================== */
+
+@media (max-width: 900px) {
+
+    .profile-page {
+        padding: 20px;
+    }
+
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .settings-card {
+        grid-column: auto;
+    }
+
+    .profile-id {
+        min-width: 120px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .profile-page {
+        padding: 12px;
+    }
+
+    .page-header h1 {
+        font-size: 24px;
+    }
+
+    .profile-summary {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .profile-avatar {
+        width: 75px;
+        height: 75px;
+        min-width: 75px;
+        font-size: 30px;
+    }
+
+    .profile-summary-details h2 {
+        font-size: 20px;
+    }
+
+    .profile-id {
+        width: 100%;
+        padding: 15px 0 0;
+        border-left: none;
+        border-top: 1px solid #e0e9f5;
+    }
+
+    .profile-card {
+        padding: 18px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .setting-item {
+        gap: 10px;
+    }
+
+    .setting-icon {
+        width: 35px;
+        height: 35px;
+        min-width: 35px;
+        font-size: 16px;
+    }
+
+    .setting-link,
+    .logout-link {
+        font-size: 12px;
+    }
+
+}

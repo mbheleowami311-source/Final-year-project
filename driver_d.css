@@ -1,0 +1,148 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #172b4d;
+        }
+
+        /* Top navigation */
+        nav {
+            height: 70px;
+            background: #082b50;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            box-shadow: #d8dde2 7px 7px 7px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .profile {
+            position: relative;
+        }
+
+        .profile-button {
+            background: transparent;
+            border: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #ffca05;
+            color: #082b50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 48px;
+            background: white;
+            min-width: 160px;
+            box-shadow: 0 4px 15px #0002;
+            border-radius: 8px;
+            overflow: hidden;
+            z-index: 100;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 12px 15px;
+            text-decoration: none;
+            color: #172b4d;
+        }
+
+        .dropdown a:hover {
+            background: #f0f4f8;
+        }
+
+        .profile:hover .dropdown,
+        .profile:focus-within .dropdown {
+            display: block;
+        }
+
+        /* Sidebar */
+        aside {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            bottom: 0;
+            width: 230px;
+            background: #082b50;
+            padding: 25px 15px;
+        }
+
+        aside a {
+            display: block;
+            color: #dce7f3;
+            text-decoration: none;
+            padding: 14px 15px;
+            margin-bottom: 8px;
+            border-radius: 7px;
+        }
+
+        aside a:hover,
+        aside a.active {
+            background: #ffca05;
+            color: #082b50;
+        }
+
+        /* Main page content */
+        main {
+            margin-left: 230px;
+            padding: 30px;
+        }
+
+        .page-heading {
+            margin-bottom: 25px;
+        }
+
+        .page-heading h1 {
+            margin-bottom: 8px;
+            font-size: 26px;
+        }
+
+        .page-heading p {
+            color: #64748b;
+        }
+
+        @media (max-width: 700px) {
+            nav {
+                padding: 0 15px;
+            }
+
+            aside {
+                width: 180px;
+            }
+
+            main {
+                margin-left: 180px;
+                padding: 15px;
+            }
+
+            .logo {
+                font-size: 16px;
+            }
+        }

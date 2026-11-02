@@ -1,0 +1,125 @@
+{% extends "11.0_manager.html" %}
+
+
+{% block title %}
+    Requests
+{% endblock %}
+
+{% block body %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='requests.css') }}">
+
+<div class="table-container">
+
+    <!-- <div class="table-header">
+        <h1>Taxi Rank Locations</h1>
+
+        <a href="/add-indawo" class="add-btn">
+            + Add Location
+        </a>
+    </div> -->
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Location</th>
+                <th>How Many</th>
+                <th>Status</th>
+                <th>Date Created</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for indawo in izindawo %}
+
+            <tr>
+
+                <td>{{ indawo.id }}</td>
+
+                <td>{{ indawo.location }}</td>
+
+                <td>{{ indawo.how_many }}</td>
+
+                <td>
+                    <span class="status {{ indawo.status|lower }}">
+                        {{ indawo.status }}
+                    </span>
+                </td>
+
+                <td>
+                    {{ indawo.date_created.strftime('%Y-%m-%d %H:%M') }}
+                </td>
+
+                <td class="actions">
+
+                    
+                <form method="POST"
+                    action="{{ url_for('assignDriver', location_id=indawo.id) }}"
+                    class="driver-assignment-form">
+
+                    <select name="driver_id"
+                            class="edit-btn"
+                            onchange="if (this.value !== '') this.form.submit();"
+                            required>
+
+                        <option value="" selected disabled>Select Driver</option>
+
+                        {% if available_drivers %}
+                            {% for driver in available_drivers %}
+                                <option value="{{ driver.id }}"
+                                    {% if indawo.assigned_driver == driver.name %}selected{% endif %}>
+                                    {{ driver.name }} {{ driver.surname }}
+                                </option>
+                            {% endfor %}
+                        {% else %}
+                            <option value="" disabled>No driver available yet</option>
+                        {% endif %}
+
+                    </select>
+
+                </form>
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+
+                    <a href="#"
+                       class="delete-btn"
+                       onclick="return confirm('Are you sure you want to delete this location?');">
+                        Delete
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% else %}
+
+            <tr>
+                <td colspan="6" class="no-data">
+                    No locations found.
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+
+{% endblock %}

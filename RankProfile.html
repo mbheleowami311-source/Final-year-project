@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPTMS - Rank Manager Profile</title>
+<link rel="Login(IPTMS).html" href="Login(IPTMS).html">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Segoe UI', Poppins, Arial, sans-serif;
+    background: linear-gradient(180deg, #2c3e50 0%, #4a90e2 100%);
+    min-height:100vh;
+  }
+ .top-nav{
+    width:100%;
+    background: white;
+    padding:14px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    position:sticky;
+    top:0;
+    z-index:1000;
+  }
+ .logo{font-weight:800;font-size:16px;color:#2c3e50}
+ .notif-wrapper{position:relative;cursor:pointer; user-select:none;}
+ .bell{font-size:26px;position:relative;line-height:1}
+ .bell-count{
+    position:absolute;
+    top:-8px;
+    right:-10px;
+    background:#dc3545;
+    color:white;
+    font-size:11px;
+    font-weight:700;
+    padding:3px 7px;
+    border-radius:50%;
+  }
+ .notif-dropdown{
+    position:absolute;
+    top:45px;
+    right:0;
+    width:380px;
+    max-width:92vw;
+    background:white;
+    border-radius:14px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    display:none;
+    max-height:75vh;
+    overflow-y:auto;
+    z-index:2000;
+  }
+ .notif-dropdown.show{display:block!important}
+ .notif-header{
+    padding:14px 16px;
+    border-bottom:1px solid #eee;
+    font-weight:700;
+    display:flex;
+    justify-content:space-between;
+  }
+ .notif-item{
+    padding:14px 16px;
+    border-bottom:1px solid #f1f1f1;
+    text-align:left;
+    white-space:normal;
+    word-break:break-word;
+  }
+ .notif-item strong{font-size:13px;display:block;margin:4px 0}
+ .notif-item small{color:#6c757d;font-size:12px;display:block;line-height:1.4}
+ .notif-type{font-size:10px;padding:3px 8px;border-radius:10px;font-weight:700}
+ .type-location{background:#d4edda;color:#155724}
+ .type-complaint{background:#f8d7da;color:#721c24}
+ .btn-assign{
+    margin-top:10px;
+    width:100%;
+    padding:10px;
+    background:#007bff;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-weight:700;
+    cursor:pointer;
+  }
+ .main{display:flex;justify-content:center;padding:30px 20px}
+ .profile-card{
+    background: rgba(232, 236, 243, 0.97);
+    width:100%;
+    max-width:480px;
+    padding:35px;
+    border-radius:18px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.25);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:16px;
+    text-align:center;
+  }
+ .profile-header h2{font-size:22px;font-weight:800}
+ .badge{margin-top:8px;display:inline-block;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:700;background:#ff9800;color:white}
+ .avatar-box{
+    width:120px;height:120px;border-radius:50%;background:#cfd8e3;border:4px solid white;
+    display:flex;align-items:center;justify-content:center;overflow:hidden;cursor:pointer;
+    position:relative;box-shadow:0 4px 12px rgba(0,0,0,0.15);
+  }
+ .avatar-box img{width:100%;height:100%;object-fit:cover}
+  .info-box{
+    width:100%;
+    background:white;
+    border-radius:12px;
+    padding:12px 16px;
+    text-align:left;
+    border:1px solid #dee2e6;
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+  }
+ .info-box label{
+    font-size:10px;
+    font-weight:700;
+    color:#6c757d;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+  }
+ .info-box span{
+    font-size:14px;
+    font-weight:600;
+    color:#212529;
+    word-break:break-word;
+  }
+</style>
+</head>
+<body>
+
+<div class="top-nav">
+  <div class="logo">IPTMS - Rank Manager</div>
+  <div class="notif-wrapper" id="notifBtn">
+    <div class="bell">▾<span class="bell-count" id="bellCount">4</span></div>
+    <div class="notif-dropdown" id="notifDropdown">
+      <div class="notif-header">
+        <span>Notifications</span>
+        <span style="font-size:11px;color:#007bff;cursor:pointer" id="clearBtn">Clear all</span>
+      </div>
+      <div id="notifList"></div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+<div class="profile-card">
+  <div class="profile-header"><h2 id="welcomeName">Sawubona, Manager!</h2><span class="badge">TAXI RANK MANAGER</span></div>
+  <div class="avatar-box" id="avatarBox"><img id="avatarImg" style="display:none"><span id="avatarText">No Image</span></div>
+  <input type="file" id="fileInput" accept="image/*" style="display:none">
+  <div class="info-box"><label>Full Name</label><span id="fullNameDisplay">Tsewu Nontando</span></div>
+  <div class="info-box"><label>Email</label><span id="emailDisplay">TsewuN@gmail.com</span></div>
+  <div class="info-box"><label>Rank Name</label><span>KwaDlangezwa Taxi Rank</span></div>
+</div>
+</div>
+</div>
+
+<script>
+const fileInput = document.getElementById('fileInput');
+const avatarImg = document.getElementById('avatarImg');
+const avatarText = document.getElementById('avatarText');
+const avatarBox = document.getElementById('avatarBox');
+const savedPic = localStorage.getItem('managerProfilePic');
+if(savedPic){ avatarImg.src=savedPic; avatarImg.style.display='block'; avatarText.style.display='none';}
+avatarBox.onclick = ()=> fileInput.click();
+fileInput.onchange = e=>{
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = ev=>{
+    try {
+      localStorage.setItem('managerProfilePic', ev.target.result);
+      avatarImg.src = ev.target.result;
+      avatarImg.style.display = 'block';
+      avatarText.style.display = 'none';
+    } catch(err){
+      alert('Image too large! Please choose a smaller photo (less than 1MB)');
+    }
+  };
+  reader.readAsDataURL(file);
+};
+let notifications = [
+  {id:1, type:'location', title:'5 commuters waiting', desc:'KwaDlangezwa → EMPANGENI', location:'KwaDlangezwa Rank - Bay 2', time:'2 min ago', count:5},
+  {id:2, type:'location', title:'12 commuters waiting', desc:'Route: ESKHAWINI→ EMPANGENI', location:'EMPANGENI Rank', time:'8 min ago', count:12},
+  {id:3, type:'complaint', title:'New complaint filed', desc:'Driver was rude - by Syanda Khumalo', time:'15 min ago'},
+  {id:4, type:'location', title:'3 commuters waiting', desc:'Route: Richards Bay → KwaDlangezwa', location:'Richards Bay Rank', time:'20 min ago', count:3},
+];
+const dropdown = document.getElementById('notifDropdown');
+const notifBtn = document.getElementById('notifBtn');
+const bellCount = document.getElementById('bellCount');
+const notifList = document.getElementById('notifList');
+
+function renderNotif(){
+  bellCount.textContent = notifications.length;
+  if(notifications.length===0){ notifList.innerHTML='<div class="notif-item"><small>No new notifications</small></div>'; return;}
+  notifList.innerHTML = notifications.map(n=>`
+    <div class="notif-item">
+      <span class="notif-type ${n.type==='location'?'type-location':'type-complaint'}">${n.type.toUpperCase()}</span>
+      <strong>${n.title} ${n.count?`(${n.count})`:''}</strong>
+      <small>${n.desc}</small>
+      <small>${n.location?` ${n.location} • `:''}${n.time}</small>
+      ${n.type==='location'?`<button class="btn-assign" onclick="assignDriver(${n.id})">Assign Driver</button>`:''}
+    </div>
+  `).join('');
+}
+function toggleNotif(e){
+  e.stopPropagation();
+  dropdown.classList.toggle('show');
+}
+function assignDriver(id){
+  const n=notifications.find(x=>x.id===id);
+  alert(`Driver assigned to ${n.count} commuters at ${n.location}`);
+  notifications = notifications.filter(x=>x.id!==id);
+  renderNotif();
+}   
+notifBtn.addEventListener('click', toggleNotif);
+document.getElementById('clearBtn').addEventListener('click', (e)=>{ e.stopPropagation(); notifications=[]; renderNotif(); });
+document.addEventListener('click', (e)=>{ if(!notifBtn.contains(e.target)) dropdown.classList.remove('show'); });
+renderNotif();
+
+const savedName = localStorage.getItem('userName') || 'Nontando Tsewu';
+document.getElementById('welcomeName').textContent = `Sawubona, ${savedName}!`;
+document.getElementById('fullNameDisplay').textContent = savedName;
+</script>
+</body>
+</html>

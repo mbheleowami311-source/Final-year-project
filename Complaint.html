@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complaint Form - Transit System</title>
+  <link rel="Profile page" href="Profile Page2.html">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { 
+      font-family: 'Segoe UI', Arial, sans-serif; 
+      background: linear-gradient(180deg, #2c3e50 0%, #4a90e2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+   .form-card {
+      background: #e8ecf3;
+      width: 100%;
+      max-width: 550px;
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+   .form-card h2 {
+      text-align: center;
+      color: #212529;
+      margin-bottom: 25px;
+    }
+   .form-group { margin-bottom: 18px; text-align: left; }
+   .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #343a40;
+    }
+   .form-group input,.form-group select,.form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #adb5bd;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: inherit;
+    }
+   .form-group textarea { resize: vertical; min-height: 100px; }
+   .btn-submit {
+      width: 100%;
+      padding: 12px;
+      background: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+   .btn-submit:hover { opacity: 0.9; }
+   .btn-back {
+      display: block;
+      text-align: center;
+      margin-top: 15px;
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+   .btn-back:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="form-card">
+    <h2>File a Complaint</h2>
+    <form onsubmit="submitComplaint(event)">
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" id="complaintName" required>
+      </div>
+      <div class="form-group">
+        <label>Complaint Type</label>
+        <select id="complaintType" required>
+          <option value="">-- Select --</option>
+          <option value="Driver Behavior">Driver Behavior</option>
+          <option value="Vehicle Condition">Vehicle Condition</option>
+          <option value="Overcharging">Overcharging</option>
+          <option value="Late/No Show">Late / No Show</option>
+          <option value="Lost items">Lost items</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Location</label>
+        <input type="text" id="complaintLocation" placeholder="e.g. uMhlathuze Taxi Rank" required>
+      </div>
+      <div class="form-group">
+        <label>Details</label>
+        <textarea id="complaintDetails" placeholder="Describe what happened..." required></textarea>
+      </div>
+      <button type="submit" class="btn-submit">SUBMIT COMPLAINT</button>
+    </form>
+    <a href="Profile Page2.html" class="btn-back">← Back to Profile</a>
+  </div>
+
+  <script>
+    function submitComplaint(e) {
+      e.preventDefault();
+      const name = document.getElementById('complaintName').value;
+      const type = document.getElementById('complaintType').value;
+      alert(`Thank you ${name}!\n\nYour "${type}" complaint has been submitted. ✅\n\nWe will review it soon.`);
+      // Later: send this data to your backend/database
+      window.location.href = 'Profile Page2.html'; // send back to profile
+    }
+  </script>
+</body>
+</html>

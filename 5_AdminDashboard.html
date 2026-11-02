@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrator Dashboard</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='5_AdminDashboard.css') }}">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">
+                <i class="fa-solid fa-taxi"></i>
+            </div>
+
+            <div>
+                <h2>SA Taxi Association</h2>
+                <p>Administrator Portal</p>
+            </div>
+        </div>
+
+        <nav class="navigation">
+
+            <a href="/5_AdminDashboard" class="nav-item ">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="{{url_for('commuters')}}" class="nav-item" >
+                <i class="fa-solid fa-users"></i>
+                <span>Commuters</span>
+            </a>
+
+            <a href="{{url_for('rankM')}}" class="nav-item" >
+                <i class="fa-solid fa-user-tie"></i>
+                <span>Managers</span>
+            </a>
+
+            <a href="{{url_for('reg_admin')}}" class="nav-item" >
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Administrators</span>
+            </a>
+
+            <a href="{{url_for('taxi_drivers')}}" class="nav-item">
+                <i class="fa-solid fa-car"></i>
+                <span>Taxi drivers</span>
+            </a>
+
+            <a href="{{url_for('dailyActiviy')}}" class="nav-item" >
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Daily Activity</span>
+            </a>
+
+            <!-- <a href="#" class="nav-item">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </a> -->
+
+        </nav>
+
+        <div class="logout">
+            <a href="{{url_for('logout')}}">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </a>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+
+            <div class="welcome">
+                <button class="menu-button">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div>
+                    <h3>Welcome, {{session["name"]}}</h3>
+                    <p>Here's what's happening in the taxi association today.</p>
+                </div>
+            </div>
+
+            <div class="topbar-right">
+
+                <div class="date">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span id="currentDate"></span>
+                </div>
+
+                <div class="profile">
+                    <a href="{{url_for('adminProfile')}}">
+                        <i class="fa-solid fa-user"></i>
+                    </a>
+                </div>
+
+            </div>
+
+        </header>
+
+        {% block body %}
+        <!-- PAGE -->
+        <section class="page">
+
+            <h1>Administrator Dashboard</h1>
+
+
+            <!-- STATISTICS -->
+            <div class="stats-grid">
+
+                <div class="stat-card blue">
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+
+                    <div>
+                        <p>Total Commuters</p>
+                        <h2>{{ commuter }}</h2>
+                        
+                    </div>
+                </div>
+
+
+                <div class="stat-card green">
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+
+                    <div>
+                        <p>Total Managers {mngr}</p>
+                        <h2>{{mngr}}</h2>
+                        
+                    </div>
+                </div>
+
+
+                <div class="stat-card purple">
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+
+                    <div>
+                        <p>Total Administrators</p>
+                        <h2>{{admin}}</h2>
+                       
+                    </div>
+                </div>
+
+
+                <div class="stat-card yellow">
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-taxi"></i>
+                    </div>
+
+                    <div>
+                        <p>Active Taxis</p>
+                        <h2>{{taxiDriver}}</h2>
+                       
+                    </div>
+                </div>
+
+            </div>
+
+
+           
+
+
+            
+                                   
+
+
+                <!-- QUICK ACTIONS -->
+                <div class="panel quick-panel">
+
+                    <div class="panel-header">
+                        <h2>Quick Actions</h2>
+                    </div>
+
+                    <div class="quick-grid">
+
+                        <a href="{{url_for('addCommuter')}}" class="quick-action blue-action">
+                            <i class="fa-solid fa-user-plus"></i>
+                            <span>Add Commuter</span>
+                        </a>
+
+                        <a href="/add_rmanager" class="quick-action green-action">
+                            <i class="fa-solid fa-user-tie"></i>
+                            <span>Add Manager</span>
+                        </a>
+
+                        <a href="/api/add" class="quick-action purple-action">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>Add Administrator</span>
+                        </a>
+
+                        <a href="/addtaxidriver" class="quick-action yellow-action">
+                            <i class="fa-solid fa-taxi"></i>
+                            <span>Add taxi drivers</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        {% endblock %}
+    </main>
+
+</div>
+
+
+<script>
+    // Display today's date automatically.
+    const today = new Date();
+
+    const options = {
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+    };
+    
+
+    document.getElementById("currentDate").textContent =
+        today.toLocaleDateString("en-GB", options);
+</script>
+
+</body>
+</html>

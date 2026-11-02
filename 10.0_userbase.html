@@ -1,0 +1,396 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Commuter Dashboard{% endblock %}</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7f6;
+            color: #1f2937;
+            min-height: 100vh;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            height: 70px;
+            background: #0f5132;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        /* LOGO / TITLE */
+        .navbar .logo {
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* NAVIGATION LINKS */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 16px;
+            border-radius: 7px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: #146c43;
+        }
+
+        /* PROFILE AND LOGOUT */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .profile {
+            background: white;
+            color: #0f5132 !important;
+            font-weight: bold;
+        }
+
+        .profile:hover {
+            background: #e8f5e9 !important;
+        }
+
+        .logout {
+            border: 1px solid white;
+        }
+
+        .logout:hover {
+            background: white !important;
+            color: #0f5132 !important;
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            padding: 35px 40px;
+        }
+
+        .form-container {
+        max-width: 650px;
+        margin: 20px auto;
+        background: white;
+        padding: 35px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-header {
+        margin-bottom: 30px;
+    }
+
+    .form-header h1 {
+        color: #111827;
+        margin-bottom: 8px;
+    }
+
+    .form-header p {
+        color: #6b7280;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #374151;
+    }
+
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid #d1d5db;
+        border-radius: 7px;
+        font-size: 14px;
+        outline: none;
+        background: white;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+        border-color: #0f5132;
+        box-shadow: 0 0 0 2px rgba(15, 81, 50, 0.1);
+    }
+
+    .button-container {
+        display: flex;
+        gap: 12px;
+        margin-top: 10px;
+    }
+
+    .request-btn {
+        flex: 1;
+        padding: 13px;
+        border: none;
+        border-radius: 7px;
+        background: #0f5132;
+        color: white;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .request-btn:hover {
+        background: #146c43;
+    }
+
+    .cancel-btn {
+        flex: 1;
+        padding: 13px;
+        border: 1px solid #dc3545;
+        border-radius: 7px;
+        background: white;
+        color: #dc3545;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .cancel-btn:hover {
+        background: #dc3545;
+        color: white;
+    }
+
+    @media (max-width: 600px) {
+        .button-container {
+            flex-direction: column;
+        }
+    }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .navbar .logo {
+                font-size: 18px;
+            }
+
+            .nav-links a {
+                padding: 8px;
+                font-size: 12px;
+            }
+
+            .main-content {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="logo">
+            Commuter Dashboard
+        </div>
+
+        <div class="nav-links">
+
+            <a href="{{url_for('myRequests')}}">
+                My requests
+            </a>
+
+            <a href="{{ url_for('file_complaint') }}">
+                File a Complaint
+            </a>
+
+            <a href="{{url_for('userdashboard')}}">
+                Request a Taxi
+            </a>
+
+            <div class="nav-right">
+
+
+                <a href="{{ url_for('logout') }}" class="logout">
+                    Logout
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- PAGE CONTENT -->
+    <main class="main-content">
+
+        {% block content %}
+
+        <h1>Welcome back {{session.name}}</h1>
+
+        
+
+        <div class="form-container">
+
+            <div class="form-header">
+                <h1>Request a Taxi</h1>
+                <p>Enter your pickup location and the number of commuters.</p>
+            </div>
+
+
+            <form action="{{ url_for('request_taxi') }}" method="POST">
+
+                <!-- LOCATION -->
+                <div class="form-group">
+
+                    <label for="location">
+                        Pickup Location
+                    </label>
+
+                    <input
+                        type="hidden"
+                        id="location"
+                        name="fk_id"
+                        value="{{session['user_id']}}"
+                        
+                    >
+
+                    <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        placeholder="Enter your pickup location"
+                        maxlength="100"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- NUMBER OF COMMUTERS -->
+                <div class="form-group">
+
+                    <label for="how_many">
+                        Number of Commuters
+                    </label>
+
+                    <select
+                        id="how_many"
+                        name="how_many"
+                        required
+                    >
+
+                        <option value="">
+                            -- Select Number --
+                        </option>
+
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="Other">Other</option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- BUTTONS -->
+                <div class="button-container">
+
+                    <button
+                        type="submit"
+                        class="request-btn">
+                        Request Taxi
+                    </button>
+
+                    <button
+                        type="button"
+                        class="cancel-btn"
+                        onclick="cancelRequest()">
+                        Cancel Request
+                    </button>
+
+                </div>
+
+            </form>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+
+                {% if messages %}
+
+                    {% for category, message in messages %}
+
+                        <div class="flash-message {{ category }}">
+                            {{ message }}
+                        </div>
+
+                    {% endfor %}
+
+                {% endif %}
+
+            {% endwith %}
+
+
+        </div>
+
+
+
+
+
+
+
+        {% endblock %}
+
+    </main>
+
+    <script>
+
+    function cancelRequest() {
+
+        const confirmCancel = confirm(
+            "Are you sure you want to cancel this taxi request?"
+        );
+
+        if (confirmCancel) {
+
+            window.location.href = "#";
+
+        }
+
+    }
+
+</script>
+
+</body>
+</html>

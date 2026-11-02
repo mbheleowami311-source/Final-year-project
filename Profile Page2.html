@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile- IPTMS</title>
+<style>
+  body{
+    margin:0;
+    background:#6aa6d6;
+    font-family:Arial, sans-serif;
+    display:flex;
+    justify-content:center;
+    padding:20px;
+  }
+  .card{
+    background:#fefdf7;
+    width:100%;
+    max-width:800px;
+    border-radius:20px;
+    padding:20px 25px;
+  }
+  .top{ display:flex; justify-content:space-between; font-size:13px; }
+  h2{ text-align:center; line-height:1.2; }
+  .pic{
+    width:150px; height:140px;
+    border:2px dashed #ccc;
+    border-radius:12px;
+    margin:15px auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+  }
+  .plus{
+    width:26px; height:26px;
+    background:#2e7d32; color:white;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    position:absolute; right:-8px; bottom:-8px;
+  }
+  .row{ display:flex; justify-content:space-between; margin:15px 0; }
+  .row p{ margin:4px 0; font-size:14px; }
+  .row label{ font-size:12px; color:#666; }
+
+  .btns{
+    display:flex !important;
+    justify-content:space-between !important;
+    width:100%;
+    margin:20px 0;
+  }
+  .btn-left{
+    background:#1e88e5;
+    color:white;
+    padding:12px 18px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:12px;
+    text-align:center;
+    width:40%;
+  }
+  .btn-right{
+    background:#e05a3f;
+    color:white;
+    padding:12px 18px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:12px;
+    text-align:center;
+    width:40%;
+  }
+  .bottom{ display:flex; justify-content:space-between; font-size:11px; margin-top:20px; }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="top">
+    <span>Kwadlangezwa • Online</span>
+    <span style="background:#333; color:white; padding:8px 10px; border-radius:50%;">OM</span>
+  </div>
+
+  <h2>Sawubona Owam Mbhele<br>Ukuphi?<br><span style="font-size:13px; color:#666; font-weight:normal;">Where are you?</span><br>
+<span style="display:inline-block; background:#007bff; color:white; padding:6px 16px; border-radius:20px; font-size:11px; font-weight:800; margin-top:10px; letter-spacing:0.5px;">COMMUTER</span></h2>
+
+<input type="file" id="fileInput" accept="image/*" style="display:none;" onchange="loadPic(event)">
+
+<div class="pic" onclick="document.getElementById('fileInput').click()" style="cursor:pointer; overflow:hidden;">
+  <span id="picText">Picture</span>
+  <img id="preview" style="width:100%; height:100%; object-fit:cover; display:none; border-radius:10px;">
+</div>
+
+<script>
+function loadPic(event){
+  const file = event.target.files[0];
+  if(!file) return;
+  const img = document.getElementById('preview');
+  const txt = document.getElementById('picText');
+  img.src = URL.createObjectURL(file);
+  img.style.display = 'block';
+  txt.style.display = 'none';
+}
+</script>
+
+  <div class="row">
+    <div>
+      <label><strong>Full Name</strong></label>
+      <p>Owam Mbhele</p>
+      <label><strong>Email</strong></label>
+      <p>mbheleowami311@gmail.com</p>
+    </div>
+    <div style="text-align:right;">
+      <label><strong>Phone</strong></label>
+      <p>079 234 5678</p>
+    </div>
+  </div>
+
+  <div class="btns">
+    <a href="update-location.html" class="btn-left">UPDATE LOCATION</a>
+    <a href="complaint.html" class="btn-right">COMPLAINT</a>
+  </div>
+
+  <div class="bottom">
+    <div>Frequent Route<br><b>Kwadlangezwa — Empangeni</b></div>
+    <div>Frequent Route<br><b>Kwadlangezwa - Empangeni</b></div>
+    <div style="text-align:right; font-size:12px; color:#6c757d;">10 min away</div>
+  </div>
+  <div style="margin-top:15px;"><a href="Home.html" style="text-decoration:none; color:#1e88e5; font-size:12px;">← Back to Home</a></div>
+</div>
+</body>
+</html>

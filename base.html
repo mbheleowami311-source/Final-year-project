@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Base{% endblock %}</title>
+    <style>
+        *{
+            margin: 0px;
+        }
+        nav {
+            background-color: #002147;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 15px 30px;
+        }
+
+        .heading {
+            color: white;
+            margin: 0;
+        }
+
+        .Options {
+            margin-left: auto;
+            display: flex;
+            gap: 25px;
+        }
+
+        .Options a {
+            color: white;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .Options a:hover {
+            color: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="image"><img src="" alt="">
+        </div>
+        <h1 class="heading">IPTMS-Rank'onnect</h1>
+        <div class="Options">
+
+            <a href="{{url_for('home')}}">Home</a>
+            <!-- <a href="{{url_for('about')}}">About</a> -->
+            <!-- <a href="{{url_for('feature')}}">Features</a> -->
+            <a href="{{url_for('login')}}">Signin</a>
+            <a href="{{url_for('register_commuter')}}">Signup</a>
+            <!-- <a href="">Register</a> -->
+
+        </div>
+        
+    </nav>
+    <hr>
+
+    {% block body %}
+
+
+    {% endblock%}
+    
+</body>
+</html>

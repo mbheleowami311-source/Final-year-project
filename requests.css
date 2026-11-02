@@ -1,0 +1,224 @@
+.table-container {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    margin: 20px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.table-header h1 {
+    color: #002147;
+    margin: 0;
+}
+
+.add-btn {
+    background: #002147;
+    color: white;
+    padding: 10px 16px;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.add-btn:hover {
+    background: #003b73;
+}
+
+/* TABLE */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #002147;
+    color: white;
+}
+
+th,
+td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:hover {
+    background: #f5f7fa;
+}
+
+/* STATUS */
+
+.status {
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* You can use statuses such as Available, Full, Closed */
+
+.status.available {
+    background: #dff5e1;
+    color: #1b7a2a;
+}
+
+.status.full {
+    background: #fff0d6;
+    color: #a05a00;
+}
+
+.status.closed {
+    background: #f8d7da;
+    color: #842029;
+}
+
+/* ACTIONS */
+
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+.edit-btn,
+.delete-btn {
+    padding: 6px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.edit-btn {
+    background: #002147;
+    color: white;
+}
+
+.delete-btn {
+    background: #dc3545;
+    color: white;
+}
+
+.edit-btn:hover {
+    background: #003b73;
+}
+
+.delete-btn:hover {
+    background: #b02a37;
+}
+
+.no-data {
+    text-align: center;
+    padding: 30px;
+    color: #777;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 800px;
+    }
+
+    .table-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}
+
+.assignment-container {
+        max-width: 600px;
+        margin: 30px auto;
+        padding: 30px;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .assignment-container h2 {
+        color: #002b5c;
+        margin-bottom: 10px;
+    }
+
+    .assignment-description {
+        color: #666;
+        margin-bottom: 25px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 15px;
+        box-sizing: border-box;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #002b5c;
+    }
+
+    .available-count {
+        display: inline-block;
+        margin-bottom: 20px;
+        padding: 8px 12px;
+        background: #e5f7eb;
+        color: #16753b;
+        border-radius: 6px;
+        font-size: 13px;
+    }
+
+    .assign-button {
+        width: 100%;
+        padding: 13px;
+        background: #002b5c;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .assign-button:hover {
+        background: #004080;
+    }
+
+    .assign-button:disabled {
+        background: #999;
+        cursor: not-allowed;
+    }
+
+    .no-drivers {
+        padding: 15px;
+        background: #fff3cd;
+        color: #856404;
+        border-radius: 6px;
+        margin-bottom: 20px;
+    }

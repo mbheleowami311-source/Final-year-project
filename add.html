@@ -1,0 +1,262 @@
+{% extends "5_AdminDashboard.html" %}
+
+{% block body %}
+
+<style>
+
+    .admin-form-container {
+        width: 100%;
+        max-width: 750px;
+        margin: 30px auto;
+        background: #ffffff;
+        padding: 35px 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .admin-form-header {
+        margin-bottom: 30px;
+        border-bottom: 1px solid #e5e7eb;
+        padding-bottom: 15px;
+    }
+
+    .admin-form-header h2 {
+        margin: 0;
+        color: #064a8a;
+        font-size: 26px;
+    }
+
+    .admin-form-header p {
+        margin-top: 7px;
+        color: #777;
+        font-size: 14px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 7px;
+        color: #333;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .form-group input {
+        width: 100%;
+        height: 45px;
+        padding: 0 14px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 14px;
+        outline: none;
+        transition: 0.2s;
+    }
+
+    .form-group input:focus {
+        border-color: #064a8a;
+        box-shadow: 0 0 0 3px rgba(6, 74, 138, 0.1);
+    }
+
+    .form-group input::placeholder {
+        color: #999;
+    }
+
+    .submit-container {
+        margin-top: 25px;
+    }
+
+    .submit-btn {
+        width: 100%;
+        height: 46px;
+        background: #064a8a;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .submit-btn:hover {
+        background: #043b6d;
+    }
+
+    /* Flash messages */
+
+    .flash-message {
+        max-width: 750px;
+        margin: 20px auto;
+        padding: 13px 18px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .flash-message.success {
+        background: #e8f7ee;
+        color: #176b3a;
+        border: 1px solid #b7e4c7;
+    }
+
+    .flash-message.danger {
+        background: #fdecec;
+        color: #a32020;
+        border: 1px solid #f5b5b5;
+    }
+
+    .flash-message.warning {
+        background: #fff7df;
+        color: #856404;
+        border: 1px solid #ffe08a;
+    }
+
+    .flash-message.info {
+        background: #e8f3ff;
+        color: #064a8a;
+        border: 1px solid #b8d8f5;
+    }
+
+    /* Mobile */
+
+    @media (max-width: 700px) {
+
+        .admin-form-container {
+            margin: 20px 10px;
+            padding: 25px 20px;
+        }
+
+        .admin-form-header h2 {
+            font-size: 22px;
+        }
+
+    }
+
+</style>
+
+<div class="admin-form-container">
+
+
+<div class="admin-form-header">
+
+    <h2>Add Administrator</h2>
+
+    <p>
+        Create a new administrator account for the Taxi association system.
+    </p>
+
+</div>
+
+
+<form action="{{ url_for('add_admin') }}" method="post">
+
+    <div class="form-group">
+
+        <label for="name">First Name</label>
+
+        <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your name"
+            required
+        >
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="surname">Surname</label>
+
+        <input
+            type="text"
+            id="surname"
+            name="surname"
+            placeholder="Enter your surname"
+            required
+        >
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="email">Email Address</label>
+
+        <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+        >
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="password">Password</label>
+
+        <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter a password"
+            required
+        >
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="phone_no">Phone Number</label>
+
+        <input
+            type="tel"
+            id="phone_no"
+            name="phone_no"
+            placeholder="Enter your phone number"
+            required
+        >
+
+    </div>
+
+
+    <div class="submit-container">
+
+        <button type="submit" class="submit-btn">
+            Create Administrator
+        </button>
+
+    </div>
+
+</form>
+
+
+</div>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+
+
+{% if messages %}
+
+    {% for category, message in messages %}
+
+        <div class="flash-message {{ category }}">
+            {{ message }}
+        </div>
+
+    {% endfor %}
+
+{% endif %}
+
+
+{% endwith %}
+
+{% endblock %}

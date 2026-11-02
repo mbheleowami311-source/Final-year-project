@@ -1,0 +1,59 @@
+{% extends "10.0_userbase.html" %}
+
+{% block title %}
+    my requests
+{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{{url_for('static', filename='my_requests.css')}}">
+
+
+    <div class="main_container">
+        <div class="top_internal_div">
+            <h3>My requests</h3>
+        </div>
+        <hr>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                {% if category == 'deleted' %}
+                    <div class="success-message">
+                        {{ message }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endwith %}
+
+        {% if requests %}
+            {% for request in requests %}
+
+       
+                <div class="request_container">
+
+                    <strong><p>location: </p></strong><p>{{request.location}}</p><br>
+                    <strong><p>no of commuter: </p></strong> <p>{{request.how_many}}</p><br>
+                    <strong><p>status: </p></strong><p>{{request.status}}</p><br>
+                    <strong><p>your driver: </p></strong> 
+                    <p>{% if request.assigned_driver==None%}
+                            <p>not yet assigned</p>
+                        {% else %}
+                            {{request.assigned_driver}}
+                        {% endif %}
+                    </p><br>
+                        
+                    <strong><p>date: </p></strong> <p>{{request.date_created}}</p><br>
+                    <form action="{{url_for('deleteRequest', request_id=request.id)}}" method="POST">
+                        <button class="delete" type="submit">delete</button>
+                    </form>
+                    
+                </div>
+            {% endfor %}
+        {% else %}
+                <h4 class="no_display">No request made yet</h4>
+        {% endif %}
+            
+
+
+    </div>
+    
+{% endblock %}

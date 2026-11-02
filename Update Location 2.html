@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Update Location</title>
+<link rel="Home.html" href="Home.html">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, lightblue, cornflowerblue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+  }
+
+  .location-card {
+    width: 100%;
+    max-width: 480px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 18px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    padding: 32px 30px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 1.25rem;
+    color: #1b3a57;
+    margin-bottom: 24px;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+  }
+
+  label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1b3a57;
+    margin-bottom: 6px;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: white;
+    font-size: 0.9rem;
+    color: black;
+    outline: none;
+    transition: border 0.15s ease;
+  }
+
+  input:focus, select:focus {
+    border: 1px solid steelblue;
+  }
+
+  select option { color: black; }
+
+  .btn-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 6px;
+  }
+
+  button {
+    flex: 1;
+    padding: 11px;
+    border-radius: 10px;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  .update-btn {
+    background: steelblue;
+    color: white;
+  }
+
+  .update-btn:hover { background: #3a6d9a; }
+
+  .home-btn {
+    background: rgba(255, 255, 255, 0.5);
+    color: #1b3a57;
+  }
+
+  .home-btn:hover { background: rgba(255, 255, 255, 0.75); }
+
+  .map-wrap {
+    margin-top: 22px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  }
+
+  .map-wrap iframe {
+    width: 100%;
+    height: 260px;
+    border: 0;
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<div class="location-card">
+  <h1>Update Location</h1>
+
+  <form>
+    <div class="field">
+      <label for="location">My Current Location (Ukuphi Nendawo?)</label>
+      <input type="text" id="location" name="location" placeholder="Enter your current location" required>
+    </div>
+
+    <div class="field">
+      <label for="abagibeli">Nibangaki?</label>
+      <select id="abagibeli" name="abagibeli">
+        <option value="" disabled selected>--Select option--</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="15+">15+</option>
+      </select>
+    </div>
+
+    <div class="btn-row">
+      <button type="submit" class="update-btn">Update</button>
+      <button type="button" class="home-btn"><a href="Home.html">Back to home</button></a>
+    </div>
+  </form>
+
+  <div class="map-wrap">
+<iframe
+   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6988.989421686726!2d31.83130427416273!3d-28.853899931192387!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1efa1b6b2512b4e3%3A0x27cf64d0fe3d5160!2sVulindlela%20A%2C%20Richards%20Bay!5e0!3m2!1sen!2sza!4v1786542266156!5m2!1sen!2sza"  allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
+   width="30%"
+   height="300"
+   style="border:0;">
+</iframe>
+   
+  </div>
+</div>
+
+</body>
+</html>

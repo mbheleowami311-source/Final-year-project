@@ -1,0 +1,92 @@
+<!-- {% extends "5_AdminDashboard.html" %}
+
+{% block body %}
+
+    <div>
+        <table>
+
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+                <th>Phone number</th>
+                <th>date created</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% if users %}
+            
+            {% for user in users %}
+            
+                <tr>
+
+                    <td>{{user.name}}</td>
+
+                    <td>{{user.surname}}</td>
+
+                    <td>{{user.email}}</td>
+
+                    <td>{{user.phone_no}}</td>
+
+                    <td>
+                        
+                        <button class="edit_btn">edit</button><br>
+                        <button class="delete_btn">delete</button>
+                    </td>
+
+                </tr>
+            
+            {% endfor %}
+        {% else %}
+            <p>There is no user yet</p>
+        {% endif %}
+        </tbody>
+
+        
+        </table>
+    </div>
+
+{% endblock %} -->
+
+
+{% extends "5_AdminDashboard.html" %}
+
+{% block body %}
+
+<!-- <div>
+    <form action="{{url_for('addCommuter')}}" method="post">
+
+        <input type="text" placeholder="Enter your name" name="name"><br><br>
+        <input type="text" placeholder="Enter your surname" name = "surname"><br><br>
+        <input type="text" placeholder="Enter your email" name="email"><br><br>
+        <input type="password" 
+            placeholder="Enter your phone password"
+            name="password" 
+            id="password"><br><br>
+        <input type="password"
+            placeholder="Enter your phone password" 
+            id="confirm_password"><br><br>
+        <input type="text"
+            placeholder="Enter your phone number"
+            name = "phone_no" ><br><br>
+        <button type="submit">add</button>
+
+    </form> 
+
+    
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash-message {{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
+
+{% endblock %} -->

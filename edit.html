@@ -1,0 +1,166 @@
+{% extends "5_AdminDashboard.html" %}
+
+{% block body %}
+
+<style>
+
+    .edit-container {
+        width: 450px;
+        margin: 40px auto;
+        padding: 30px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.10);
+    }
+
+    .edit-container h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #333;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 7px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #444;
+    }
+
+    .form-group input {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 7px;
+        font-size: 14px;
+        outline: none;
+    }
+
+    .form-group input:focus {
+        border-color: #333;
+    }
+
+    .update-btn {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 7px;
+        background: #333;
+        color: white;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .update-btn:hover {
+        background: #555;
+    }
+
+    .cancel-btn {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        margin-top: 10px;
+        padding: 12px;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 7px;
+        background: #eee;
+        color: #333;
+        font-size: 15px;
+    }
+
+    .cancel-btn:hover {
+        background: #ddd;
+    }
+
+</style>
+
+<div class="edit-container">
+
+
+<h2>Edit Commuter</h2>
+
+<form action="{{ url_for('edit_user', user_id=user.id) }}"
+      method="POST">
+
+    <div class="form-group">
+
+        <label for="name">Name</label>
+
+        <input
+            type="text"
+            id="name"
+            name="name"
+            value="{{ user.name }}"
+            required
+        >
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="surname">Surname</label>
+
+        <input
+            type="text"
+            id="surname"
+            name="surname"
+            value="{{ user.surname }}"
+            required
+        >
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="email">Email</label>
+
+        <input
+            type="email"
+            id="email"
+            name="email"
+            value="{{ user.email }}"
+            required
+        >
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="phone_no">Phone Number</label>
+
+        <input
+            type="text"
+            id="phone_no"
+            name="phone_no"
+            value="{{ user.phone_no }}"
+            required
+        >
+
+    </div>
+
+
+    <button type="submit" class="update-btn">
+        Update Commuter
+    </button>
+
+
+    <a href="{{ url_for('commuters') }}" class="cancel-btn">
+        Cancel
+    </a>
+
+</form>
+
+
+</div>
+
+{% endblock %}

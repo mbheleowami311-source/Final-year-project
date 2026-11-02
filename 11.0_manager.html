@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>
+    {% block title %}
+        Taxi Rank
+    {% endblock %}
+</title>
+
+
+<!-- Font Awesome -->
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+>
+
+
+<style>
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+
+    body {
+        font-family: Arial, sans-serif;
+
+        background: #f5f7fa;
+
+        color: #002147;
+    }
+
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    .navbar {
+
+        height: 70px;
+
+        width: 100%;
+
+        background: #002147;
+
+        color: white;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        padding: 0 25px;
+
+        position: fixed;
+
+        top: 0;
+
+        left: 0;
+
+        z-index: 1000;
+    }
+
+
+    /* LEFT SIDE */
+
+    .navbar-left {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 20px;
+    }
+
+
+    .menu-btn {
+
+        width: 40px;
+
+        height: 40px;
+
+        border: none;
+
+        background: transparent;
+
+        color: white;
+
+        font-size: 20px;
+
+        cursor: pointer;
+
+        border-radius: 6px;
+    }
+
+
+    .menu-btn:hover {
+
+        background: rgba(255, 255, 255, 0.12);
+    }
+
+
+    .logo {
+
+        color: white;
+
+        font-size: 21px;
+
+        font-weight: bold;
+
+        text-decoration: none;
+    }
+
+
+    /* RIGHT SIDE */
+
+    .navbar-right {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 20px;
+    }
+
+
+    /* =========================
+       NOTIFICATIONS
+    ========================= */
+
+    .notification-container {
+
+        position: relative;
+    }
+
+
+    .notification-btn {
+
+        width: 40px;
+
+        height: 40px;
+
+        border: none;
+
+        background: transparent;
+
+        color: white;
+
+        font-size: 19px;
+
+        cursor: pointer;
+
+        border-radius: 6px;
+    }
+
+
+    .notification-btn:hover {
+
+        background: rgba(255, 255, 255, 0.12);
+    }
+
+
+    .notification-count {
+
+        position: absolute;
+
+        top: -3px;
+
+        right: -2px;
+
+        min-width: 18px;
+
+        height: 18px;
+
+        padding: 0 5px;
+
+        border-radius: 20px;
+
+        background: #dc3545;
+
+        color: white;
+
+        font-size: 11px;
+
+        font-weight: bold;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+    }
+
+
+    .notification-count.hidden {
+
+        display: none;
+    }
+
+
+    /* =========================
+       PROFILE
+    ========================= */
+
+    .profile-container {
+
+        position: relative;
+    }
+
+
+    .profile-btn {
+
+        border: none;
+
+        background: transparent;
+
+        color: white;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 9px;
+
+        cursor: pointer;
+
+        padding: 8px 10px;
+
+        border-radius: 7px;
+
+        font-size: 14px;
+    }
+
+
+    .profile-btn:hover {
+
+        background: rgba(255, 255, 255, 0.12);
+    }
+
+
+    .profile-icon {
+
+        width: 35px;
+
+        height: 35px;
+
+        border-radius: 50%;
+
+        background: white;
+
+        color: #002147;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        font-size: 15px;
+    }
+
+
+    .profile-arrow {
+
+        font-size: 11px;
+    }
+
+
+    /* PROFILE DROPDOWN */
+
+    .profile-dropdown {
+
+        display: none;
+
+        position: absolute;
+
+        right: 0;
+
+        top: 52px;
+
+        width: 180px;
+
+        background: white;
+
+        border-radius: 8px;
+
+        box-shadow:
+            0 8px 25px rgba(0, 0, 0, 0.15);
+
+        overflow: hidden;
+
+        border: 1px solid #e2e8f0;
+    }
+
+
+    .profile-dropdown.show {
+
+        display: block;
+    }
+
+
+    .profile-dropdown a {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 12px;
+
+        padding: 14px 16px;
+
+        color: #002147;
+
+        text-decoration: none;
+
+        font-size: 14px;
+    }
+
+
+    .profile-dropdown a:hover {
+
+        background: #f1f5f9;
+    }
+
+
+    .profile-dropdown .logout-link {
+
+        color: #b91c1c;
+
+        border-top: 1px solid #e2e8f0;
+    }
+
+
+    /* =========================
+       SIDEBAR
+    ========================= */
+
+    .sidebar {
+
+        position: fixed;
+
+        top: 70px;
+
+        left: 0;
+
+        width: 250px;
+
+        height: calc(100vh - 70px);
+
+        background: white;
+
+        border-right: 1px solid #e2e8f0;
+
+        padding: 20px 12px;
+
+        transition: 0.3s;
+
+        z-index: 900;
+    }
+
+
+    .sidebar.closed {
+
+        width: 0;
+
+        padding-left: 0;
+
+        padding-right: 0;
+
+        overflow: hidden;
+    }
+
+
+    /* SIDEBAR MENU */
+
+    .sidebar-menu {
+
+        list-style: none;
+    }
+
+
+    .sidebar-menu li {
+
+        margin-bottom: 5px;
+    }
+
+
+    .sidebar-menu a {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 14px;
+
+        padding: 13px 15px;
+
+        border-radius: 7px;
+
+        color: #334155;
+
+        text-decoration: none;
+
+        font-size: 15px;
+
+        white-space: nowrap;
+
+        transition: 0.2s;
+    }
+
+
+    .sidebar-menu a i {
+
+        width: 20px;
+
+        text-align: center;
+
+        color: #002147;
+    }
+
+
+    .sidebar-menu a:hover {
+
+        background: #eaf0f6;
+
+        color: #002147;
+    }
+
+
+    .sidebar-menu a.active {
+
+        background: #002147;
+
+        color: white;
+    }
+
+
+    .sidebar-menu a.active i {
+
+        color: white;
+    }
+
+
+    /* LOGOUT */
+
+    .sidebar-logout {
+
+        position: absolute;
+
+        bottom: 20px;
+
+        left: 12px;
+
+        right: 12px;
+    }
+
+
+    .sidebar-logout a {
+
+        color: #b91c1c;
+    }
+
+
+    .sidebar-logout a i {
+
+        color: #b91c1c;
+    }
+
+
+    /* =========================
+       MAIN CONTENT
+    ========================= */
+
+    .main-content {
+
+        margin-left: 250px;
+
+        padding: 95px 30px 30px;
+
+        min-height: 100vh;
+
+        transition: 0.3s;
+    }
+
+
+    .main-content.expanded {
+
+        margin-left: 0;
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 700px) {
+
+        .sidebar {
+
+            width: 250px;
+
+            box-shadow:
+                5px 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+
+        .sidebar.closed {
+
+            width: 0;
+        }
+
+
+        .main-content {
+
+            margin-left: 0;
+        }
+
+
+        .profile-name {
+
+            display: none;
+        }
+
+
+        .navbar {
+
+            padding: 0 15px;
+        }
+
+    }
+
+</style>
+
+
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+
+
+<div class="navbar-left">
+
+    <button
+        class="menu-btn"
+        onclick="toggleSidebar()"
+        aria-label="Toggle sidebar">
+
+        <i class="fa-solid fa-bars"></i>
+
+    </button>
+
+
+    <a href="#" class="logo">
+        TaxiRank
+    </a>
+
+</div>
+
+
+<div class="navbar-right">
+
+
+    <!-- NOTIFICATION -->
+
+    <!-- <div class="notification-container">
+
+        <button
+            class="notification-btn"
+            onclick="showNotifications()">
+
+            <i class="fa-solid fa-bell"></i>
+
+            <span
+                id="notificationCount"
+                class="notification-count hidden">
+                0
+            </span>
+
+        </button>
+
+    </div> -->
+
+
+    <!-- PROFILE -->
+
+    <div class="profile-container">
+
+        <button
+            class="profile-btn"
+            onclick="toggleProfileMenu()">
+
+            <span class="profile-icon">
+                <i class="fa-solid fa-user"></i>
+            </span>
+
+            <span class="profile-name">
+                {{ session["name"] }}
+            </span>
+
+            <i class="fa-solid fa-chevron-down profile-arrow"></i>
+
+        </button>
+
+
+        <div
+            class="profile-dropdown"
+            id="profileDropdown">
+
+            <a href="{{url_for('manager_profile')}}">
+
+                <i class="fa-solid fa-user"></i>
+
+                Profile
+
+            </a>
+
+
+            <a href="{{url_for('logout')}}" class="logout-link">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</nav>
+
+
+<aside class="sidebar" id="sidebar">
+
+<ul class="sidebar-menu">
+
+
+
+    <li>
+
+        <a href="{{url_for('requests')}}">
+
+            <i class="fa-solid fa-taxi"></i>
+
+            <span>Requests</span>
+
+        </a>
+
+    </li>
+
+
+    <li>
+
+        <a href="{{url_for('user_complaints')}}">
+
+            <i class="fa-solid fa-message"></i>
+
+            <span>Complaints</span>
+
+        </a>
+
+    </li>
+
+
+    <li>
+
+        <a href="{{url_for('manager_profile')}}">
+
+            <i class="fa-solid fa-user"></i>
+
+            <span>Profile</span>
+
+        </a>
+
+    </li>
+
+
+</ul>
+
+
+<!-- SIDEBAR LOGOUT -->
+
+<div class="sidebar-logout">
+
+    <a href="{{url_for('logout')}}">
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        <span>Logout</span>
+
+    </a>
+
+</div>
+
+
+</aside>
+
+<!-- =========================
+     MAIN CONTENT
+========================= -->
+
+<main class="main-content" id="mainContent">
+
+{% block body %}
+{% endblock %}
+
+
+</main>
+
+<script>
+
+    /* =========================
+       SIDEBAR
+    ========================= */
+
+    function toggleSidebar() {
+
+        const sidebar =
+            document.getElementById("sidebar");
+
+        const mainContent =
+            document.getElementById("mainContent");
+
+
+        sidebar.classList.toggle("closed");
+
+        mainContent.classList.toggle("expanded");
+
+    }
+
+
+    /* =========================
+       PROFILE DROPDOWN
+    ========================= */
+
+    function toggleProfileMenu() {
+
+        const dropdown =
+            document.getElementById("profileDropdown");
+
+        dropdown.classList.toggle("show");
+
+    }
+
+
+    /* CLOSE PROFILE DROPDOWN
+       WHEN CLICKING OUTSIDE
+    */
+
+    document.addEventListener("click", function(event) {
+
+        const profile =
+            document.querySelector(".profile-container");
+
+        const dropdown =
+            document.getElementById("profileDropdown");
+
+
+        if (!profile.contains(event.target)) {
+
+            dropdown.classList.remove("show");
+
+        }
+
+    });
+
+
+    /* =========================
+       NOTIFICATIONS
+    ========================= */
+
+    function updateNotifications() {
+
+        fetch("/notifications/count")
+
+            .then(response => response.json())
+
+            .then(data => {
+
+                const count =
+                    document.getElementById(
+                        "notificationCount"
+                    );
+
+
+                if (data.count > 0) {
+
+                    count.textContent =
+                        data.count;
+
+                    count.classList.remove("hidden");
+
+                } else {
+
+                    count.classList.add("hidden");
+
+                }
+
+            })
+
+            .catch(error => {
+
+                console.log(
+                    "Notification error:",
+                    error
+                );
+
+            });
+
+    }
+
+
+    /* CHECK EVERY 5 SECONDS */
+
+    updateNotifications();
+
+    setInterval(
+        updateNotifications,
+        5000
+    );
+
+
+    /* =========================
+       NOTIFICATION CLICK
+    ========================= */
+
+    function showNotifications() {
+
+        window.location.href =
+            "/notifications";
+
+    }
+
+</script>
+
+</body>
+
+</html>
